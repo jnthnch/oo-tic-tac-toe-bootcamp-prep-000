@@ -93,43 +93,43 @@ class TicTacToe
     end
   end
   
-  def draw?(board)
-    if won?(board)
+  def draw?(@board)
+    if won?(@board)
       return false 
     end
     WIN_COMBINATIONS.each do |win_combo|
-      if (board[win_combo[0]] == "X" && board[win_combo[1]] == "X" && board[win_combo[2]] == "X") || !full?(board)
+      if (@board[win_combo[0]] == "X" && @board[win_combo[1]] == "X" && @board[win_combo[2]] == "X") || !full?(@board)
         return false
-      elsif (board[win_combo[0]] == "O" && board[win_combo[1]] == "O" && board[win_combo[2]] == "O") || !full?(board)
+      elsif (@board[win_combo[0]] == "O" && @board[win_combo[1]] == "O" && @board[win_combo[2]] == "O") || !full?(@board)
         return false
       end
     end
     return true
   end
   
-  def over?(board)
-    draw?(board) || won?(board)
+  def over?(@board)
+    draw?(@board) || won?(@board)
   end
 
-  def winner(board)
+  def winner(@board)
     WIN_COMBINATIONS.each do |win_combo|
-      if board[win_combo[0]] == "X" && board[win_combo[1]] == "X" && board[win_combo[2]] == "X"
+      if @board[win_combo[0]] == "X" && @board[win_combo[1]] == "X" && @board[win_combo[2]] == "X"
         return "X"
-      elsif board[win_combo[0]] == "O" && board[win_combo[1]] == "O" && board[win_combo[2]] == "O"
+      elsif @board[win_combo[0]] == "O" && @board[win_combo[1]] == "O" && @board[win_combo[2]] == "O"
         return "O"
       end
     end
     return nil
   end
   
-  def play(board)
-    until over?(board)
-      turn(board)
+  def play(@board)
+    until over?(@board)
+      turn(@board)
     end
   
-    if won?(board)
-      puts "Congratulations #{winner(board)}!"
-    elsif draw?(board)
+    if won?(@board)
+      puts "Congratulations #{winner(@board)}!"
+    elsif draw?(@board)
       puts "Cat's Game!"
     end
   end 
