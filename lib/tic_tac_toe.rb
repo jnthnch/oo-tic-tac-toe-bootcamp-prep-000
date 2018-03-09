@@ -87,6 +87,12 @@ class TicTacToe
     return false
   end
   
+  def full?(board)
+    board.all? do |spot|
+      (spot.include?("X") || spot.include?("O")) && board.count == 9
+    end
+  end
+  
   
   
   
