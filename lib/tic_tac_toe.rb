@@ -17,24 +17,24 @@ class TicTacToe
   def display_board(@board)
     puts "  #{@board[0]} | #{@board[1]} | #{@board[2]} "
     puts "-----------"
-    puts "  #{board[3]} | #{@board[4]} | #{@board[5]} "
+    puts "  #{@board[3]} | #{@board[4]} | #{@board[5]} "
     puts "-----------"
-    puts "  #{board[6]} | #{board[7]} | #{board[8]} "
+    puts "  #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
   
   def input_to_index(user_input)
   user_input.to_i - 1
   end
   
-  def move(board, index, mark) 
-    if !position_taken?(board, index)
-      board[index] = mark
+  def move(@board, index, mark) 
+    if !position_taken?(@board, index)
+      @board[index] = mark
     end
-    board
+    @board
   end
   
-  def position_taken?(board, pos_idx)
-    if board[pos_idx] == " " || board[pos_idx] == "" || board[pos_idx] == nil
+  def position_taken?(@board, pos_idx)
+    if @board[pos_idx] == " " || @board[pos_idx] == "" || @board[pos_idx] == nil
       return false
     elsif board[pos_idx] == "X" || board[pos_idx] == "O" 
       return true
