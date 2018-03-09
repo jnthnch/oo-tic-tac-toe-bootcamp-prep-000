@@ -26,7 +26,7 @@ class TicTacToe
   user_input.to_i - 1
   end
   
-  def move(index, mark) 
+  def move(index, mark="X") 
     if !position_taken?(@board, index)
       @board[index] = mark
     end
