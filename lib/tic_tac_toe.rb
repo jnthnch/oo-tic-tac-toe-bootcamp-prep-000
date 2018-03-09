@@ -36,35 +36,35 @@ class TicTacToe
   def position_taken?(@board, pos_idx)
     if @board[pos_idx] == " " || @board[pos_idx] == "" || @board[pos_idx] == nil
       return false
-    elsif board[pos_idx] == "X" || board[pos_idx] == "O" 
+    elsif @board[pos_idx] == "X" || @board[pos_idx] == "O" 
       return true
     end
   end 
   
-  def valid_move?(board, index)
-    if position_taken?(board, index) || !index.between?(0, 8)
+  def valid_move?(@board, index)
+    if position_taken?(@board, index) || !index.between?(0, 8)
       return false
     else 
       return true
     end
   end
   
-  def turn(board)
+  def turn(@board)
     puts "Please enter 1-9:"
     user_input = gets.strip
     index = input_to_index(user_input)
-    mark = current_player(board)
-    if valid_move?(board, index)
-      move(board, index, mark)
+    mark = current_player(@board)
+    if valid_move?(@board, index)
+      move(@board, index, mark)
     else
-      turn(board)
+      turn(@board)
     end
-    display_board(board)
+    display_board(@board)
   end
   
-  def turn_count(board)
+  def turn_count(@board)
     counter = 0 
-    board.each do |space|
+    @board.each do |space|
       if space == "X" || space == "O"
         counter += 1 
       end
@@ -72,24 +72,24 @@ class TicTacToe
     counter
   end  
   
-  def current_player(board)
-    turn_count(board).even? ? "X" : "O"
+  def current_player(@board)
+    turn_count(@board).even? ? "X" : "O"
   end
   
-  def won?(board)
+  def won?(@board)
     WIN_COMBINATIONS.each do |win_combo|
-      if board[win_combo[0]] == "X" && board[win_combo[1]] == "X" && board[win_combo[2]] == "X"
+      if @board[win_combo[0]] == "X" && @board[win_combo[1]] == "X" && @board[win_combo[2]] == "X"
         return win_combo
-      elsif board[win_combo[0]] == "O" && board[win_combo[1]] == "O" && board[win_combo[2]] == "O"
+      elsif @board[win_combo[0]] == "O" && @board[win_combo[1]] == "O" && @board[win_combo[2]] == "O"
         return win_combo
       end
     end
     return false
   end
   
-  def full?(board)
-    board.all? do |spot|
-      (spot.include?("X") || spot.include?("O")) && board.count == 9
+  def full?(@board)
+    @board.all? do |spot|
+      (spot.include?("X") || spot.include?("O")) && @board.count == 9
     end
   end
   
