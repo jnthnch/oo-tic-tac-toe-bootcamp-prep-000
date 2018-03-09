@@ -3,4 +3,5 @@ class TicTacToe
     @board = board
   end
   
+  WIN_COMBINATIONS
 end
