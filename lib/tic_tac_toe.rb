@@ -93,6 +93,20 @@ class TicTacToe
     end
   end
   
+  def draw?(board)
+    if won?(board)
+      return false 
+    end
+    WIN_COMBINATIONS.each do |win_combo|
+      if (board[win_combo[0]] == "X" && board[win_combo[1]] == "X" && board[win_combo[2]] == "X") || !full?(board)
+        return false
+      elsif (board[win_combo[0]] == "O" && board[win_combo[1]] == "O" && board[win_combo[2]] == "O") || !full?(board)
+        return false
+      end
+    end
+    return true
+  end
+  
   
   
   
