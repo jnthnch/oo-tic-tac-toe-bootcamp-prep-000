@@ -26,6 +26,13 @@ class TicTacToe
   user_input.to_i - 1
   end
   
+  def move(board, index, mark) 
+  if !position_taken?(board, index)
+    board[index] = mark
+  end
+  board
+  end
+  
   
   
 end
