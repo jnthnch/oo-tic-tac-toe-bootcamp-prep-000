@@ -53,13 +53,13 @@ class TicTacToe
     puts "Please enter 1-9:"
     user_input = gets.strip
     index = input_to_index(user_input)
-    mark = current_player(@board)
-    if valid_move?(@board, index)
-      move(@board, index, mark)
+    mark = current_player
+    if valid_move?(index)
+      move(index, mark)
     else
-      turn(@board)
+      turn
     end
-    display_board(@board)
+    display_board
   end
   
   def turn_count
@@ -94,11 +94,11 @@ class TicTacToe
   end
   
   def draw?
-    if won?(@board)
+    if won?
       return false 
     end
     WIN_COMBINATIONS.each do |win_combo|
-      if (@board[win_combo[0]] == "X" && @board[win_combo[1]] == "X" && @board[win_combo[2]] == "X") || !full?(@board)
+      if (@board[win_combo[0]] == "X" && @board[win_combo[1]] == "X" && @board[win_combo[2]] == "X") || !full?
         return false
       elsif (@board[win_combo[0]] == "O" && @board[win_combo[1]] == "O" && @board[win_combo[2]] == "O") || !full?(@board)
         return false
