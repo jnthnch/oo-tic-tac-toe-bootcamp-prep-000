@@ -27,13 +27,13 @@ class TicTacToe
   end
   
   def move(index, mark="X") 
-    if !position_taken?(@board, index)
+    if !position_taken?(index)
       @board[index] = mark
     end
     @board
   end
   
-  def position_taken?(@board, pos_idx)
+  def position_taken?(pos_idx)
     if @board[pos_idx] == " " || @board[pos_idx] == "" || @board[pos_idx] == nil
       return false
     elsif @board[pos_idx] == "X" || @board[pos_idx] == "O" 
@@ -41,7 +41,7 @@ class TicTacToe
     end
   end 
   
-  def valid_move?(@board, index)
+  def valid_move?(index)
     if position_taken?(@board, index) || !index.between?(0, 8)
       return false
     else 
@@ -49,7 +49,7 @@ class TicTacToe
     end
   end
   
-  def turn(@board)
+  def turn
     puts "Please enter 1-9:"
     user_input = gets.strip
     index = input_to_index(user_input)
@@ -62,7 +62,7 @@ class TicTacToe
     display_board(@board)
   end
   
-  def turn_count(@board)
+  def turn_count
     counter = 0 
     @board.each do |space|
       if space == "X" || space == "O"
@@ -72,11 +72,11 @@ class TicTacToe
     counter
   end  
   
-  def current_player(@board)
+  def current_player
     turn_count(@board).even? ? "X" : "O"
   end
   
-  def won?(@board)
+  def won?
     WIN_COMBINATIONS.each do |win_combo|
       if @board[win_combo[0]] == "X" && @board[win_combo[1]] == "X" && @board[win_combo[2]] == "X"
         return win_combo
@@ -87,13 +87,13 @@ class TicTacToe
     return false
   end
   
-  def full?(@board)
+  def full?
     @board.all? do |spot|
       (spot.include?("X") || spot.include?("O")) && @board.count == 9
     end
   end
   
-  def draw?(@board)
+  def draw?
     if won?(@board)
       return false 
     end
@@ -107,11 +107,11 @@ class TicTacToe
     return true
   end
   
-  def over?(@board)
+  def over?
     draw?(@board) || won?(@board)
   end
 
-  def winner(@board)
+  def winner
     WIN_COMBINATIONS.each do |win_combo|
       if @board[win_combo[0]] == "X" && @board[win_combo[1]] == "X" && @board[win_combo[2]] == "X"
         return "X"
@@ -122,7 +122,7 @@ class TicTacToe
     return nil
   end
   
-  def play(@board)
+  def play
     until over?(@board)
       turn(@board)
     end
