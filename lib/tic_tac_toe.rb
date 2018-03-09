@@ -27,11 +27,19 @@ class TicTacToe
   end
   
   def move(board, index, mark) 
-  if !position_taken?(board, index)
-    board[index] = mark
+    if !position_taken?(board, index)
+      board[index] = mark
+    end
+    board
   end
-  board
-  end
+  
+  def position_taken?(board, pos_idx)
+    if board[pos_idx] == " " || board[pos_idx] == "" || board[pos_idx] == nil
+      return false
+    elsif board[pos_idx] == "X" || board[pos_idx] == "O" 
+      return true
+    end
+  end 
   
   
   
