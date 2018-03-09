@@ -100,7 +100,7 @@ class TicTacToe
     WIN_COMBINATIONS.each do |win_combo|
       if (@board[win_combo[0]] == "X" && @board[win_combo[1]] == "X" && @board[win_combo[2]] == "X") || !full?
         return false
-      elsif (@board[win_combo[0]] == "O" && @board[win_combo[1]] == "O" && @board[win_combo[2]] == "O") || !full?(@board)
+      elsif (@board[win_combo[0]] == "O" && @board[win_combo[1]] == "O" && @board[win_combo[2]] == "O") || !full?
         return false
       end
     end
@@ -108,7 +108,7 @@ class TicTacToe
   end
   
   def over?
-    draw?(@board) || won?(@board)
+    draw? || won?
   end
 
   def winner
